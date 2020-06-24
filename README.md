@@ -1,8 +1,6 @@
 # ActiveadminGooglePlaces
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/activeadmin_google_places`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Plugin for adding google places search autocomplete to activeadmin
 
 ## Installation
 
@@ -16,23 +14,47 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
+And then add these javascript files to the activeadmin.js file:
 
-    $ gem install activeadmin_google_places
+```js
+//= require activeadmin/google_places/google_places
+//= require activeadmin/google_places_input
+```
 
-## Usage
+Please generate the activeadmin_google_places initializer:
 
-TODO: Write usage instructions here
+    $ rails generate activeadmin_google_places:install
+    
+This will create a initializer file that you can add your Google API key.
+This will be used for the fields that you want to add google places autocomplete.
+Unless you configure this api key google will refuse to show any places results.
 
-## Development
+In activeadmin you can basic add google places search by doing ```as: :google_places``` to
+your inputs.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Examples
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+
+ form do |f|
+    f.inputs 'Event' do
+      f.input :name
+      f.input :date
+      f.input :location, as: :google_places
+      f.input :active
+    end
+    f.actions
+  end
+```
+
+## Do you like it? Star it!
+
+If you use this component just star it. A developer is more motivated to improve a project when there is some interest.
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/activeadmin_google_places.
+Bug reports and pull requests are welcome on GitHub at https://github.com/randikabanura/activeadmin_google_places.
 
 
 ## License
