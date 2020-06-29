@@ -2,6 +2,10 @@ window.onload = function() {
     initGooglePlaces();
 }
 
+document.addEventListener('has_many_add:after', function () {
+    initGooglePlaces();
+})
+
 function initGooglePlaces() {
     google_places_inputs = document.querySelectorAll('.google-places-field');
     autocompletes = [];
